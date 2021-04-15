@@ -7,24 +7,35 @@
     <title>Home</title>
   </head>
   <body>
-    <h1>Add Movie</h1>
-    <form method="POST" action="/">
-      <input type="text" name="title" />
-      <input type="submit" value="Add" />
-    </form>
-
-    <h1>Movie</h1>
-    {% for movie in movies %}
-    <p>{{movie.title}}</p>
-    <form method="POST" action="./update">
-      <input type="hidden" value="{{movie.title}}" name="oldtitle" />
-      <input type="text" value="{{movie.title}}" name="newtitle" />
-      <input type="submit" value="Update" />
-    </form>
-    <form method="POST" action="./delete">
-      <input type="hidden" value="{{movie.title}}" name="title" />
-      <input type="submit" value="Delete" />
-    </form>
-    {% endfor %}
-  </body>
+    <body>
+      <h1>Add movie</h1>
+      <form method="POST" action="/">
+        <input type="text" name="title">
+        <input type="submit" value="Add">
+      </form>
+  
+      <h1>Movies</h1>
+      <table>
+        {% for movie in movies %}
+          <tr>
+            <td>
+              {{movie.title}}
+            </td>
+            <td>
+              <form method="POST" action="./update" style="display: inline">
+                <input type="hidden" value="{{movie.title}}" name="oldtitle">
+                <input type="text" value="{{movie.title}}" name="newtitle">
+                <input type="submit" value="Update">
+              </form>
+            </td>
+            <td>
+              <form method="POST" action="./delete" style="display: inline">
+                <input type="hidden" value="{{movie.title}}" name="title">
+                <input type="submit" value="Delete">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </body>
 </html>
