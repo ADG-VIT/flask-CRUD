@@ -16,6 +16,11 @@
     <h1>Movie</h1>
     {% for movie in movies %}
     <p>{{movie.title}}</p>
+    <form method="POST" action="./update">
+      <input type="hidden" value="{{movie.title}}" name="oldtitle" />
+      <input type="text" value="{{movie.title}}" name="newtitle" />
+      <input type="submit" value="Update" />
+    </form>
     {% endfor %}
   </body>
 </html>

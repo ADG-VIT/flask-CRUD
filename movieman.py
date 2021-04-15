@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -29,7 +29,18 @@ def home():
         movie = Movie(title=request.form.get("title"))
         db.session.add(movie)
         db.session.commit()
-    return render_template("home.html")
+    movies = Movie.query.all()
+    return render_template("home.html", movies=movies)
+
+
+@app.route("/update", methods=["POST"])
+def update():
+    newtitle = request.form.get("newtitle")
+    oldtitle = request.form.get("oldtitle")
+    movie = Movie.query.filter_by(title=oldtitle).first()
+    movie.title = newtitle
+    db.session.commit()
+    return redirect("/")
 
 
 if __name__ == "__main__":
