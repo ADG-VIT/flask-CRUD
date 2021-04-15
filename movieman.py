@@ -1,11 +1,13 @@
-from flask import Flask
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
-    return "My flask app"
+    if request.form:
+        print(request.form)
+    return render_template("home.html")
 
 
 if __name__ == "__main__":
