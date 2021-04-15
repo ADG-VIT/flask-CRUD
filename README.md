@@ -24,5 +24,5 @@ This is a boilerplate for building Flask apps.
 5. Setup _DB_
    `python db_inti.py`
 6. _Run_ the _app_ with
-   `python movieman.py`
+   `python app.py`
 7. Open [localhost:5000](http://localhost:5000/) to view your app
