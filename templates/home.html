@@ -7,9 +7,15 @@
     <title>Home</title>
   </head>
   <body>
+    <h1>Add Movie</h1>
     <form method="POST" action="/">
       <input type="text" name="title" />
       <input type="submit" value="Add" />
     </form>
+
+    <h1>Movie</h1>
+    {% for movie in movies %}
+    <p>{{movie.title}}</p>
+    {% endfor %}
   </body>
 </html>
