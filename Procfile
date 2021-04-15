@@ -1,1 +1,1 @@
-web: gunicorn app:movieman
+web: gunicorn app: movieman.py
