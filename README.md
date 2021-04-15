@@ -22,7 +22,7 @@ This is a boilerplate for building Flask apps.
 4. _Install_ dependencies
    `pip install -r requirements.txt`
 5. Setup _DB_
-   `python db_inti.py`
+   `python db_init.py`
 6. _Run_ the _app_ with
    `python app.py`
 7. Open [localhost:5000](http://localhost:5000/) to view your app
