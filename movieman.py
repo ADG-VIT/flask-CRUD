@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 database_file = "sqlite:///{}".format(
-    os.path.join(project_dir, "bookdatabase.db"))
+    os.path.join(project_dir, "moviedatabase.db"))
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
@@ -26,7 +26,9 @@ class Movie(db.Model):
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.form:
-        print(request.form)
+        movie = Movie(title=request.form.get("title"))
+        db.session.add(movie)
+        db.session.commit()
     return render_template("home.html")
 
 
