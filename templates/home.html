@@ -21,6 +21,10 @@
       <input type="text" value="{{movie.title}}" name="newtitle" />
       <input type="submit" value="Update" />
     </form>
+    <form method="POST" action="./delete">
+      <input type="hidden" value="{{movie.title}}" name="title" />
+      <input type="submit" value="Delete" />
+    </form>
     {% endfor %}
   </body>
 </html>

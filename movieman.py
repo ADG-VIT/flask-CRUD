@@ -43,5 +43,14 @@ def update():
     return redirect("/")
 
 
+@app.route("/delete", methods=["POST"])
+def delete():
+    title = request.form.get("title")
+    movie = Movie.query.filter_by(title=title).first()
+    db.session.delete(movie)
+    db.session.commit()
+    return redirect("/")
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
