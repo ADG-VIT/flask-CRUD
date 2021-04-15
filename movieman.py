@@ -26,29 +26,41 @@ class Movie(db.Model):
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.form:
-        movie = Movie(title=request.form.get("title"))
-        db.session.add(movie)
-        db.session.commit()
+        try:
+            movie = Movie(title=request.form.get("title"))
+            db.session.add(movie)
+            db.session.commit()
+        except Exception as e:
+            print("Failed to add movie")
+            print(e)
     movies = Movie.query.all()
     return render_template("home.html", movies=movies)
 
 
 @app.route("/update", methods=["POST"])
 def update():
-    newtitle = request.form.get("newtitle")
-    oldtitle = request.form.get("oldtitle")
-    movie = Movie.query.filter_by(title=oldtitle).first()
-    movie.title = newtitle
-    db.session.commit()
+    try:
+        newtitle = request.form.get("newtitle")
+        oldtitle = request.form.get("oldtitle")
+        movie = Movie.query.filter_by(title=oldtitle).first()
+        movie.title = newtitle
+        db.session.commit()
+    except Exception as e:
+        print("Couldn't update book title")
+        print(e)
     return redirect("/")
 
 
 @app.route("/delete", methods=["POST"])
 def delete():
-    title = request.form.get("title")
-    movie = Movie.query.filter_by(title=title).first()
-    db.session.delete(movie)
-    db.session.commit()
+    try:
+        title = request.form.get("title")
+        movie = Movie.query.filter_by(title=title).first()
+        db.session.delete(movie)
+        db.session.commit()
+    except Exception as e:
+        print("Couldn't delete book title")
+        print(e)
     return redirect("/")
 
 
