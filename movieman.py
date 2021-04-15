@@ -46,7 +46,7 @@ def update():
         movie.title = newtitle
         db.session.commit()
     except Exception as e:
-        print("Couldn't update book title")
+        print("Couldn't update movie title")
         print(e)
     return redirect("/")
 
@@ -59,7 +59,7 @@ def delete():
         db.session.delete(movie)
         db.session.commit()
     except Exception as e:
-        print("Couldn't delete book title")
+        print("Couldn't delete movie title")
         print(e)
     return redirect("/")
 
