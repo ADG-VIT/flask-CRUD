@@ -1,5 +1,7 @@
 # Flask-CRUD
 
+[![wakatime](https://wakatime.com/badge/github/cryptus-neoxys/flask-CRUD.svg)](https://wakatime.com/badge/github/cryptus-neoxys/flask-CRUD)
+
 This is a boilerplate for building Flask apps.
 
 ## ▶️ Run Locally
